@@ -1,0 +1,21 @@
+<div class="detalles">
+    <div class="contenedor">
+        <div class="details">
+            <div class="poster">
+                <img src="{{this.url + 'get-imgDetail/' + poster.titulo}}" alt="poster.titulo" *ngIf="poster.post && this.bandera == 'serie'">
+                <img src="{{this.url + 'post-movie/' + poster.titulo}}" alt="poster.titulo" *ngIf="poster.post && this.bandera == 'movie'">
+
+                <img src="../../../assets/images/netflix.jpg" alt="poster.titulo" *ngIf="!poster.post">
+            </div>
+            <div class="detail">
+                <h3>{{poster.titulo}}</h3>
+                <p>{{poster.sinopsis}}</p>
+                <span>{{poster.year}} | {{poster.genero}} </span>
+                <span *ngIf="poster.duracion">| {{poster.duracion || poster.temporadas}}</span>
+                <span *ngIf="!poster.duracion">| {{poster.temporadas}} Temporadas</span>
+            </div>
+        </div>
+    </div>
+
+    <app-ver [pelicula]="imgVista" [bandera]="bandera" [poster]="this.poster"></app-ver>
+</div>

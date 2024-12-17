@@ -1,0 +1,43 @@
+<div class="view-container">
+    <div class="view-video" *ngFor="let ep of data">
+        <div *ngFor="let info of array">
+            <div class="actions">
+                <button (click)="previous(ep.episodio)" *ngIf="this.data[0].episodio > 1">
+                    <i class="fa fa-arrow-left"></i> Epidosido anterior</button>
+                <button (click)="volver(ep.serie, this.bandera)">
+                    <i class="fa fa-list"></i> Lista de episodios
+                </button>
+                <button (click)="next(ep.episodio)" *ngIf="ep.episodio < this.episodios.length">
+                    Episodio siguiente <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="video-view">
+                <!-- <iframe width="560" height="315" [src]="this.videoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+
+                <!-- <img src="{{ep.imagen}}" alt="{{info.title}}"> -->
+                <div *ngIf="this.play == false">
+                    <div class="imag">
+                        <img src="{{this.url + 'getImgCap/' + ep.serie + '/' + ep.episodio + '/' + ep.temporada}}"
+                            alt="{{ep.nombre}}">
+                    </div>
+                    <div class="icon" (click)="run()">
+                        <i class="fa fa-light fa-play"></i>
+                    </div>
+                </div>
+
+                <video controls *ngIf="this.play == true" autoplay>
+                    <source src="{{this.url + 'get-video/' + ep.serie + '/' + ep.temporada + '/' + ep.nombre}}" type="video/mp4" frameborder="0">
+                </video>
+            </div>
+
+            <section class="section-info">
+                <h4>Episodio {{ep.episodio}} | {{ep.nombre}}</h4>
+                <p>{{ep.descripcion}}.</p>
+                <div class="info-span">
+                    <span>Genero: {{info.genero}}</span>
+                    <span>{{info.year}}</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

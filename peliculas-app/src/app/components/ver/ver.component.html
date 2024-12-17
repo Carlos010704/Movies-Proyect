@@ -1,0 +1,41 @@
+<div class="center" *ngIf="bandera == 'movie'">
+    <div class="view">
+        <div class="video-view view-movie">
+
+            <div *ngIf="this.play == false">
+                <div class="ima">
+                    <img src="{{this.url + 'post-movie/' + poster.titulo}}" alt="{{poster.titulo}}">
+                </div>
+                <div class="icon" (click)="run()">
+                    <i class="fa fa-light fa-play"></i>
+                </div>
+            </div>
+
+            <video controls *ngIf="this.play == true" autoplay>
+                <source src="{{this.url + 'getMovie/' + this.titulo}}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</div>
+
+<div class="section-tem" *ngIf="bandera == 'serie'">
+    <div id="select-tem">
+        <div class="name-serie">
+            <h4>Episodios |&nbsp;</h4>
+            <h6>{{poster.titulo}}</h6>
+        </div>
+        <Select ngDefaultControl [(ngModel)]="temp" (ngModelChange)="option()">
+            <option value="{{tem}}" *ngFor="let tem of temporadas">Temporada {{tem}}</option>
+        </Select>
+    </div>
+
+    <div class="chapters">
+        <div class="chapter" *ngFor="let ep of episodios;" (click)="ver(ep.nombre)">
+            <img src="{{this.url + 'getImgCap/' + ep.serie + '/' + ep.episodio + '/' + ep.temporada}}" alt="">
+            <div class="chapter-info">
+                <h6>{{ep.episodio}}. {{ep.nombre}}</h6>
+                <span>{{ep.duracion}}min</span>
+            </div>
+        </div>
+    </div>
+</div>

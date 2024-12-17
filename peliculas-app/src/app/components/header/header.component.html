@@ -1,0 +1,31 @@
+<header id="header">
+    <div class="center">
+        <div class="logo">
+            <img src="../../../assets/images/2991485.png" alt="logo">
+            <span>
+                <a [routerLink]="['/home']">Peliculas</a>
+            </span>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li id="menu-item"><a [routerLink]="['/peliculas']">Películas</a></li>
+                <li id="menu-item"><a [routerLink]="['/series']">Series</a></li>
+                <li id="menu-item" class=" menu-item-g">
+                    <a href="#">Género</a>
+                    <ul class="submenu">
+                        <li *ngFor="let genero of generos" [routerLink]="['genero/', genero.genero]">{{genero.genero}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <form class="search" #searchInput="ngForm" (ngSubmit)="search()">
+            <input class="input-search" type="search" placeholder="Buscar" name="buscar" [(ngModel)]="searchString" autocomplete="off">
+            <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd" />
+            </svg>
+        </form>
+    </div>
+</header>

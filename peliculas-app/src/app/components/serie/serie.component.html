@@ -1,0 +1,14 @@
+<div id="articles">
+    <div *ngFor="let serie of series">
+        <article class="article-item" [routerLink]="['/', serie.titulo, this.bandera]">
+            <div class="image-wrap">
+                <img src="{{this.url + 'get-post/' + serie.titulo}}" alt="{{serie.titulo}}">
+            </div>
+            <p>{{serie.titulo}}</p>
+            <span>{{serie.year}}</span>
+            <span></span>
+
+            <div class="clean"></div>
+        </article>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div id="articles">
+    <div *ngFor="let pelicula of peliculas">
+        <article class="article-item" [routerLink]="['/', pelicula.titulo, this.bandera]">
+            <div class="image-wrap">
+                <img class="image-poster" src="{{this.url + 'img-movie/' + pelicula.titulo}}" alt="{{pelicula.titulo}}">
+            </div>
+            <p>{{pelicula.titulo}}</p>
+            <span>{{pelicula.year}}</span>
+
+            <div class="clean"></div>
+        </article>
+    </div>
+</div>

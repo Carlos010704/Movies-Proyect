@@ -1,0 +1,19 @@
+<div class="buscar">
+    <div class="result">
+        <h5>Resultados: {{searchString}}</h5>
+    </div>
+        <div id="articles">
+            <div *ngFor="let movie of filter">
+                <article class="article-item" (click)="type(movie.titulo)">
+                    <div class="image-wrap">
+                    <img src="{{this.url + 'get-post/' + movie.titulo}}" alt="filter.titulo" *ngIf="movie.temporadas">
+                    <img src="{{this.url + 'img-movie/' + movie.titulo}}" alt="filter.titulo">
+                    </div>
+                    <p>{{movie.titulo}}</p>
+                    <span>{{movie.year}}</span>
+    
+                    <div class="clean"></div>
+                </article>
+            </div>
+    </div>
+</div>

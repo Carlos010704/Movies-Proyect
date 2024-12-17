@@ -1,0 +1,24 @@
+<div class="buscar">
+    <div class="result">
+        <h5>{{generoString}}</h5>
+    </div>
+    <div class="noResults" *ngIf="filterGenero.length <= 0">
+        <p>No hay resultados que coincidan con la busqueda...</p>
+    </div>
+
+
+    <div id="articles" *ngIf="filterGenero.length > 0">
+        <div *ngFor="let filter of filterGenero">
+            <article class="article-item" (click)="type(filter.title)">
+                <div class="image-wrap">
+                    <img src="{{this.url + 'get-post/' + filter.titulo}}" alt="filter.titulo" *ngIf="filter.temporadas">
+                    <img src="{{this.url + 'img-movie/' + filter.titulo}}" alt="filter.titulo">
+                </div>
+                <p>{{filter.titulo}}</p>
+                <span>{{filter.year}}</span>
+
+                <div class="clean"></div>
+            </article>
+        </div>
+    </div>
+</div>
